@@ -139,6 +139,12 @@ int main()
           auto msg = "42[\"estimate_marker\"," + msgJson.dump() + "]";
           // std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
+
+          if (sensor_type.compare("L") == 0) {
+            std::cout << ukf.NIS_lidar_ << std::endl;
+          } else if (sensor_type.compare("R") == 0) {
+            std::cout << ukf.NIS_radar_ << std::endl;
+          }
 	  
         }
       } else {
